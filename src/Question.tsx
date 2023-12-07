@@ -7,19 +7,17 @@ export const Question:
 React.FC<{question: string}> = ({question}) => {
     const { fontFamily } = loadFont();
 	const frame = useCurrentFrame();
-	const opacity = interpolate(frame, [0, 10], [0, 1], {
+	const opacity = interpolate(frame, [0, 8], [0, 1], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
-    const scale = interpolate(frame, [20, 40], [1.5, 1], {
+    const scale = interpolate(frame, [35, 40], [1.5, 1], {
 		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-        easing: Easing.exp
+		extrapolateRight: 'clamp'
 	});
-    const translateY = interpolate(frame, [20, 40], [0, -700], {
+    const translateY = interpolate(frame, [35, 40], [0, -650], {
 		extrapolateLeft: 'clamp',
-		extrapolateRight: 'clamp',
-        easing: Easing.exp
+		extrapolateRight: 'clamp'
 	});
 
     const transform = `translateY(${translateY}px) scale(${scale})`;

@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-box {
+    animation: example 4s infinite;
+}
+
+@keyframes example {
+    0% {transform: translate(1.32px, -1.50px);}
+    5% {transform: translate(-0.26px, -1.98px);}
+    10% {transform: translate(-1.66px, -1.12px);}
+    15% {transform: translate(-1.93px, 0.51px);}
+    20% {transform: translate(-0.90px, 1.79px);}
+    25% {transform: translate(0.75px, 1.85px);}
+    30% {transform: translate(1.89px, 0.66px);}
+    35% {transform: translate(1.74px, -0.98px);}
+    40% {transform: translate(0.41px, -1.96px);}
+    45% {transform: translate(-1.20px, -1.60px);}
+    50% {transform: translate(-1.99px, -0.16px);}
+    55% {transform: translate(-1.44px, 1.39px);}
+    60% {transform: translate(0.10px, 2.00px);}
+    65% {transform: translate(1.56px, 1.25px);}
+    70% {transform: translate(1.97px, -0.35px);}
+    75% {transform: translate(1.04px, -1.71px);}
+    80% {transform: translate(-0.60px, -1.91px);}
+    85% {transform: translate(-1.83px, -0.81px);}
+    90% {transform: translate(-1.81px, 0.84px);}
+    95% {transform: translate(-0.57px, 1.92px);}
+    100% {transform: translate(1.32px, -1.50px);}
+}
+
