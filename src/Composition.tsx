@@ -1,28 +1,13 @@
 import {AbsoluteFill} from 'remotion';
-import {Logo} from './Logo';
-import {Subtitle} from './Subtitle';
-import {Title} from './Title';
-import {z} from 'zod';
-import {zColor} from '@remotion/zod-types';
+import { Question } from './Question';
+import { Answer, AnswerType } from './Answer';
 
-export const myCompSchema = z.object({
-	titleText: z.string(),
-	titleColor: zColor(),
-	logoColor: zColor(),
-});
-
-export const MyComposition: React.FC<z.infer<typeof myCompSchema>> = ({
-	titleText: propOne,
-	titleColor: propTwo,
-	logoColor: propThree,
-}) => {
+export const MyComposition: React.FC = () => {
 	return (
-		<AbsoluteFill className="bg-gray-100 items-center justify-center">
-			<div className="m-10" />
-			<Logo logoColor={propThree} />
-			<div className="m-3" />
-			<Title titleText={propOne} titleColor={propTwo} />
-			<Subtitle />
+		<AbsoluteFill className="bg-[#5DB09E] items-center justify-center">
+			<Question question='Why was 6 scared of 7?' />
+			<Answer answer='cause 7 was a registered sex offender' type={AnswerType.FIRST} />
+			<Answer answer='cause 7 ate 9' type={AnswerType.SECOND} />
 		</AbsoluteFill>
 	);
 };
