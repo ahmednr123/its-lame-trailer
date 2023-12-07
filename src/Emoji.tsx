@@ -10,6 +10,6 @@ export const Emoji:
 React.FC<{}> =
 () => {
 	return (
-        <>🤣</>
+        <div className='text-[100px] absolute'>🤣</div>
     );
 };
