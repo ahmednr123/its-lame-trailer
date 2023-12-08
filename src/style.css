@@ -8,6 +8,7 @@
 
 .rotate-anim {
     animation: flipRotate 0.5s steps(1) infinite;
+    transform-origin: 0px 0px;
 }
 
 @keyframes example {

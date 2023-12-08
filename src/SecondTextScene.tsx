@@ -14,21 +14,26 @@ export const SecondTextScene: React.FC = () => {
     const { fontFamily } = loadFont();
     const frame = useCurrentFrame();
 
-    const words = ['WHAT',' KIND',' OF',' QUESTIONS?'];
-    const i = getWordIndex(frame, [19,29,34,49]);
+    const words = ['WHAT',' KIND',' OF',' ANSWERS?'];
+    const i = getWordIndex(frame, [0,15,20,30]);
+    const variations = [-300,-300,-300,-300,-430]
 
-//    const translateY = interpolate(frame, [70,75], [0,-1920], {
+//    const translateX = interpolate(frame, [0,30], [-300,-400], {
 //        extrapolateLeft: 'clamp',
 //        extrapolateRight: 'clamp'
 //    });
-//    const transform = `translateY(${translateY}px)`;
+    const transform = `translate(${(frame*-0.7)+(i*variations[i])}px,-50%)`;
 
     return (
 		<AbsoluteFill className="bg-[#fff] p-[100px] items-center justify-center">
-            <div style={{fontFamily}} className='leading-[1] text-[150px] font-extrabold flex w-[972px] text-black'>
-                {words.slice(0,i).map(str => <div>{str}</div>)}
+            <div style={{fontFamily,transform, top:'50%',left:'50%'}} className='absolute leading-[1] text-[150px] font-extrabold w-max text-black'>
+                {
+                    words
+                        .slice(0,i)
+                        .map(str => <span className='mx-[8px]'>{str}</span>)
+                }
             </div>
 		</AbsoluteFill>
 	);
 };
-
+//.filter((_,index)=> index==i || (i >= 3 && index==3))

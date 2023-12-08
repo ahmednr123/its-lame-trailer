@@ -17,7 +17,7 @@ export const FirstTextScene: React.FC = () => {
     const words = ['ANSWER','QUIRKY','QUESTIONS','WITH YOUR','FRIENDS'];
     const i = getWordIndex(frame, [19,29,34,49,59]);
 
-    const translateY = interpolate(frame, [70,75], [0,-1920], {
+    const translateY = interpolate(frame, [0,80], [0,-200], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp'
     });
