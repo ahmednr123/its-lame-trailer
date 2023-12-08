@@ -1,18 +1,22 @@
-import {AbsoluteFill, Series} from 'remotion';
-import { Question } from './Question';
-import { Answer, AnswerType } from './Answer';
-import { Emoji } from './Emoji';
+import {Sequence, Series} from 'remotion';
 import { FirstQAScene } from './FirstQAScene';
+import { EmojiComposition } from './EmojiComposition';
+import { FirstTextScene } from './FirstTextScene';
 
 export const MyComposition: React.FC = () => {
 	return (
+    <>
         <Series>
-            <Series.Sequence durationInFrames={160}>
+            <Series.Sequence durationInFrames={180}>
                 <FirstQAScene/>
             </Series.Sequence>
-            <Series.Sequence offset={140} durationInFrames={20}>
-                <Emoji/>
-            </Series.Sequence>
         </Series>
+        <Sequence from={180} durationInFrames={75}>
+            <FirstTextScene />
+        </Sequence>
+        <Sequence from={140} durationInFrames={60}>
+            <EmojiComposition />
+        </Sequence>
+    </>
 	);
 };
