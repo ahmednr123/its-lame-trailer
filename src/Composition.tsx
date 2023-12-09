@@ -5,6 +5,8 @@ import { FirstTextScene } from './FirstTextScene';
 import { SecondTextScene } from './SecondTextScene';
 import { ThirdTextScene } from './ThirdTextScene';
 import { FirstVideoScene } from './FirstVideoScene';
+import { SecondVideoScene } from './SecondVideoScene';
+import { WinnersScene } from './WinnersScene';
 
 export const MyComposition: React.FC = () => {
 	return (
@@ -16,6 +18,12 @@ export const MyComposition: React.FC = () => {
         </Series>
         <Sequence from={180} durationInFrames={85}>
             <FirstTextScene />
+        </Sequence>
+        <Sequence from={638} durationInFrames={80}>
+            <WinnersScene/>
+        </Sequence>
+        <Sequence from={333} durationInFrames={314}>
+            <SecondVideoScene/>
         </Sequence>
         <Sequence from={260} durationInFrames={80}>
             <FirstVideoScene/>

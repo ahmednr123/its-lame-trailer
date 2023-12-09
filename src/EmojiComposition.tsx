@@ -88,7 +88,7 @@ export const EmojiComposition: React.FC = () => {
 
  	return (
 		<AbsoluteFill>
-            {formatterArr.map(e => <Emoji x={e.left} y={e.top} scale={e.scale}/>)}
+            {formatterArr.map((e, i) => <Emoji x={e.left} y={e.top} scale={e.scale} flip={i%2==0}/>)}
 		</AbsoluteFill>
 	);
 };
