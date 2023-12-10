@@ -21,36 +21,36 @@ export const SecondVideoScene: React.FC = () => {
         extrapolateRight: 'clamp'
     });
 
-    const moveHandX = interpolate(frame, [110, 130, 148, 168], [200,0,0,200], {
+    const moveHandX = interpolate(frame, [140, 160, 168, 198], [200,0,0,200], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.out(Easing.cubic)
     })
 
-    const moveHandY = interpolate(frame, [110, 130, 148, 168], [520,0,0,520], {
+    const moveHandY = interpolate(frame, [140, 160, 168, 198], [520,0,0,520], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.out(Easing.cubic)
     })
 
-    const handScale = interpolate(frame, [130,134,135,140], [1,0.85,0.85,1], {
+    const handScale = interpolate(frame, [160,164,165,170], [1,0.85,0.85,1], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp'
     });
 
-    const firstTextPosition = interpolate(frame, [165, 185], [0,-800], {
+    const firstTextPosition = interpolate(frame, [195, 215], [0,-800], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.sin
     });
 
-    const videoPosition = interpolate(frame, [165, 185, 233, 243], [0,-640, -640, -200], {
+    const videoPosition = interpolate(frame, [195, 215, 263, 273], [0,-640, -640, -200], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: frame < 233 ? Easing.sin : Easing.in(Easing.sin)
     });
 
-    const fullSweep = interpolate(frame, [304, 314], [0,-100], {
+    const fullSweep = interpolate(frame, [364, 374], [0,-100], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.sin
@@ -68,19 +68,19 @@ export const SecondVideoScene: React.FC = () => {
                 <div><span style={{opacity:revealAfter(frame,35)}}>THE</span><span style={{opacity:revealAfter(frame,40)}} className='ml-[40px]'>FUNNIEST</span></div>
                 <div><span style={{opacity:revealAfter(frame,50)}}>ANSWER</span></div>
             </div>
-            <div style={{fontFamily, transform: 'translateY(-520px)', opacity:revealAfter(frame,270)}} className='absolute text-[#071F21] text-[150px] font-extrabold'>TYPICAL</div>
+            <div style={{fontFamily, transform: 'translateY(-520px)', opacity:revealAfter(frame,315)}} className='absolute text-[#071F21] text-[150px] font-extrabold'>TYPICAL</div>
             <div style={{opacity: `${opacity}`, transform: `translateY(${videoPosition}px)`}} className='opacity-0'>
                 <SecondVideo />
             </div>
-            <div style={{fontFamily, transform: 'translateY(500px)', opacity:revealAfter(frame,280)}} className='absolute text-[#071F21] text-[150px] font-extrabold'>MODI JI!</div>
+            <div style={{fontFamily, transform: 'translateY(500px)', opacity:revealAfter(frame,325)}} className='absolute text-[#071F21] text-[150px] font-extrabold'>MODI JI!</div>
             <div style={{fontFamily}} className='absolute text-[#071F21] text-[150px] w-[98%] font-extrabold leading-[1.1] mt-[900px] left-[170px]'>
-                <div><span style={{opacity:revealAfter(frame,185,220)}}>WHO</span></div>
-                <div><span style={{opacity:revealAfter(frame,190,225)}} className='ml-[100px]'>COULD</span></div>
-                <div><span style={{opacity:revealAfter(frame,198,230)}} className='ml-[300px]'>IT</span></div>
-                <div><span style={{opacity:revealAfter(frame,210,235)}} className='ml-[450px]'>BE?</span></div>
+                <div><span style={{opacity:revealAfter(frame,215,250)}}>WHO</span></div>
+                <div><span style={{opacity:revealAfter(frame,220,255)}} className='ml-[100px]'>COULD</span></div>
+                <div><span style={{opacity:revealAfter(frame,228,260)}} className='ml-[300px]'>IT</span></div>
+                <div><span style={{opacity:revealAfter(frame,240,265)}} className='ml-[450px]'>BE?</span></div>
             </div>
             <div style={{rotate: '-30deg', transform: `translate(${moveHandX}px,${moveHandY}px)`, scale: `${handScale}`}} className='absolute text-[240px] bottom-[70px] left-[600px]'>👆🏾</div>
-            <Sequence from={130}>
+            <Sequence from={160}>
                 <Audio src={staticFile("click.wav")}/>
             </Sequence>
             <Sequence from={21}>
@@ -98,60 +98,60 @@ export const SecondVideoScene: React.FC = () => {
             <Sequence from={51}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={86}>
+            <Sequence from={116}>
                 <Audio src={staticFile("notification.mp3")} />
             </Sequence>
-            <Sequence from={158}>
+            <Sequence from={188}>
                 <Audio src={staticFile("notification-done.mp3")} volume={0.5} />
             </Sequence>
-            <Sequence from={168}>
+            <Sequence from={198}>
                 <Audio src={staticFile("quick-woosh.wav")} />
             </Sequence>
-            <Sequence from={186}>
+            <Sequence from={216}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={191}>
+            <Sequence from={221}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={199}>
+            <Sequence from={229}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={210}>
+            <Sequence from={240}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
             
-            <Sequence from={221}>
+            <Sequence from={251}>
                 <Audio src={staticFile("notification-done.mp3")} volume={0.3} />
             </Sequence>
-            <Sequence from={226}>
+            <Sequence from={256}>
                 <Audio src={staticFile("notification-done.mp3")} volume={0.3} />
             </Sequence>
-            <Sequence from={230}>
+            <Sequence from={260}>
                 <Audio src={staticFile("notification-done.mp3")} volume={0.3} />
             </Sequence>
-            <Sequence from={235}>
+            <Sequence from={265}>
                 <Audio src={staticFile("notification-done.mp3")} volume={0.3} />
             </Sequence>
 
-            <Sequence from={235}>
+            <Sequence from={265}>
                 <Audio src={staticFile("quick-woosh.wav")}/>
             </Sequence>
-            <Sequence from={271}>
+            <Sequence from={316}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={281}>
+            <Sequence from={326}>
                 <Audio src={staticFile("jab.wav")}/>
             </Sequence>
-            <Sequence from={275}>
+            <Sequence from={325}>
                 <Audio src={staticFile("ping.mp3")}/>
             </Sequence>
-            <Sequence from={280}>
+            <Sequence from={330}>
                 <Audio src={staticFile("ping.mp3")}/>
             </Sequence>
-            <Sequence from={285}>
+            <Sequence from={335}>
                 <Audio src={staticFile("ping.mp3")}/>
             </Sequence>
-            <Sequence from={300}>
+            <Sequence from={360}>
                 <Audio src={staticFile("whoosh.mp3")}/>
             </Sequence>
         </AbsoluteFill>

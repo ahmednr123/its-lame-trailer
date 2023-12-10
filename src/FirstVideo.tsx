@@ -10,7 +10,7 @@ React.FC<{scale: number}> = ({scale}) => {
     const { fontFamily } = loadFont();
 	const frame = useCurrentFrame();
 
-    const translateY = interpolate(frame, [2, 10, 11, 60], [2100, 200, 200, -100], {
+    const translateY = interpolate(frame, [2, 10, 11, 90], [2100, 200, 200, -100], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp'
     });
@@ -30,9 +30,9 @@ React.FC<{scale: number}> = ({scale}) => {
     const loader = Math.round(interpolate(frame, [0,80], [100,50]));
 
     let inputValue = 'Answer';
-    if (frame > 35) {
+    if (frame > 55) {
         const text = 'GAAAAAAYYYYYYYYYYY!!!';
-        inputValue = text.slice(0, Math.min(text.length, Math.max((frame-35)/2, 1)))
+        inputValue = text.slice(0, Math.min(text.length, Math.max((frame-65)/2, 1)))
     }
 
 	return (

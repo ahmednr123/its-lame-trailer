@@ -1,4 +1,4 @@
-import {AbsoluteFill, Audio, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, Easing, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import { loadFont } from '@remotion/google-fonts/Lexend'
 
 function getWordIndex (frame: number, arr: number[]) {
@@ -19,7 +19,8 @@ export const FirstTextScene: React.FC = () => {
 
     const translateY = interpolate(frame, [0,80,81,85], [0,-200,-200,-2000], {
         extrapolateLeft: 'clamp',
-        extrapolateRight: 'clamp'
+        extrapolateRight: 'clamp',
+        easing: Easing.cubic
     });
     const transform = `translateY(${translateY}px)`;
 

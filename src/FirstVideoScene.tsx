@@ -6,37 +6,37 @@ export const FirstVideoScene: React.FC = () => {
     const { fontFamily } = loadFont();
     const frame = useCurrentFrame();
 
-    const scale = interpolate(frame, [53,77], [0.8, 4], {
+    const scale = interpolate(frame, [83,107], [0.8, 4], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.cubic
     })
 
-    const rotate = interpolate(frame, [53,77], [0,-70], {
+    const rotate = interpolate(frame, [83,107], [0,-70], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.cubic
     });
 
-    const slideY = interpolate(frame, [53,77], [0,-2400], {
+    const slideY = interpolate(frame, [83,107], [0,-2400], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.cubic
     });
 
-    const slideX = interpolate(frame, [53,77], [0,400], {
+    const slideX = interpolate(frame, [83,107], [0,400], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp',
         easing: Easing.cubic
     });
 
-    const opacity = interpolate(frame, [73,80], [1,0], {
+    const opacity = interpolate(frame, [103,110], [1,0], {
         extrapolateLeft: 'clamp',
         extrapolateRight: 'clamp'
     });
 
     let background = '#071F21';
-    if (frame <= 4 || frame > 72) {
+    if (frame <= 4 || frame > 102) {
         background = '#071F2100';
     }
 
@@ -48,9 +48,11 @@ export const FirstVideoScene: React.FC = () => {
                 <FirstVideo scale={scale}/>
             </div>
             <Audio src={staticFile('quick-woosh.wav')} />
-            <Audio src={staticFile("gay.mp3")} startFrom={2} volume={
-                f => interpolate(frame, [19,20], [0,1], {extrapolateLeft:"clamp"})
-            } />
+            <Sequence from={30}>
+                <Audio src={staticFile("gay.mp3")} startFrom={2} volume={
+                    f => interpolate(f, [21,30], [0,1], {extrapolateLeft:"clamp"})
+                } />
+            </Sequence>
             <Sequence from={10}>
                 <Audio src={staticFile("notification.mp3")} />
             </Sequence>

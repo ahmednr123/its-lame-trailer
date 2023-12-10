@@ -11,11 +11,11 @@ React.FC<{question: string}> = ({question}) => {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});
-    const scale = interpolate(frame, [35, 40], [1.5, 1], {
+    const scale = interpolate(frame, [60, 65], [1.5, 1], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp'
 	});
-    const translateY = interpolate(frame, [35, 40], [0, -650], {
+    const translateY = interpolate(frame, [60, 65], [0, -650], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp'
 	});

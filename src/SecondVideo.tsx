@@ -48,38 +48,38 @@ React.FC = () => {
     const londrinaFontFamily = LoadLondrina().fontFamily;
 	const frame = useCurrentFrame();
 
-    const opacityBackdrop = interpolate(frame, [80, 98, 152, 170], [0,1,1,0], {
+    const opacityBackdrop = interpolate(frame, [110, 128, 182, 200], [0,1,1,0], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
         easing: Easing.sin
     });
 
-    const inputRevealY = interpolate(frame, [80, 98, 152, 170], [500,0,0,500], {
+    const inputRevealY = interpolate(frame, [110, 128, 182, 200], [500,0,0,500], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
         easing: Easing.sin
     });
 
-    const height = interpolate(frame, [165, 185], [1500, 900], {
+    const height = interpolate(frame, [195, 215], [1500, 900], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
         easing: Easing.sin
     });
 
-    const topMargin = interpolate(frame, [165, 185], [100, -290], {
+    const topMargin = interpolate(frame, [195, 215], [100, -290], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
         easing: Easing.sin
     });
 
-    const revealWidth = interpolate(frame, [230,240,241,251], [0, 310, 310, 0], {
+    const revealWidth = interpolate(frame, [270,280,281,291], [0, 310, 310, 0], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp'
     });
 
     let revealed = false;
     let revealClamp = 'left-[100px]'
-    if (frame > 240) {
+    if (frame > 280) {
         revealClamp = 'right-[100px]';
         revealed = true;
     }
@@ -90,11 +90,12 @@ React.FC = () => {
         {reverse: true, offset: 5}
     );
 
-    const index = frame > 280 ? Math.min(Math.floor((frame-280)/5), 3) : 0;
+    const index = frame > 330 ? Math.min(Math.floor((frame-330)/5), 3) : 0;
     const votes = ['Yogi', 'Amit', 'Sonia'];
-    const loader = Math.round(interpolate(frame, [80,180], [100,50]));
+    
+    const loader = Math.round(interpolate(frame, [110,210], [100,50]));
 
-    const isSelected = frame > 134;
+    const isSelected = frame > 164;
 
 	return (
         <div

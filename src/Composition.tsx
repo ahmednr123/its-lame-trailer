@@ -1,4 +1,4 @@
-import {Sequence, Series} from 'remotion';
+import {Audio, Sequence, Series, staticFile} from 'remotion';
 import { FirstQAScene } from './FirstQAScene';
 import { EmojiComposition } from './EmojiComposition';
 import { FirstTextScene } from './FirstTextScene';
@@ -13,28 +13,29 @@ export const MyComposition: React.FC = () => {
 	return (
     <>
         <Series>
-            <Series.Sequence durationInFrames={180}>
+            <Series.Sequence durationInFrames={200}>
                 <FirstQAScene/>
             </Series.Sequence>
         </Series>
-        <Sequence from={180} durationInFrames={85}>
+        <Sequence from={200} durationInFrames={85}>
             <FirstTextScene />
         </Sequence>
-        <Sequence from={818} durationInFrames={173}>
+        <Sequence from={925} durationInFrames={173}>
             <ActionScene/>
         </Sequence>
-        <Sequence from={638} durationInFrames={200}>
+        <Sequence from={740} durationInFrames={200}>
             <WinnersScene/>
         </Sequence>
-        <Sequence from={333} durationInFrames={314}>
+        <Sequence from={375} durationInFrames={374}>
             <SecondVideoScene/>
         </Sequence>
-        <Sequence from={260} durationInFrames={80}>
+        <Sequence from={280} durationInFrames={110}>
             <FirstVideoScene/>
         </Sequence>
-        <Sequence from={140} durationInFrames={60}>
+        <Sequence from={160} durationInFrames={60}>
             <EmojiComposition />
         </Sequence>
+        <Audio src={staticFile('funky.wav')} volume={0.25} />
     </>
 	);
 };
