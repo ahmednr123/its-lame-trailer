@@ -1,4 +1,4 @@
-import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
+import { Audio, AbsoluteFill, Easing, interpolate, Sequence, staticFile, useCurrentFrame} from 'remotion';
 import { loadFont } from '@remotion/google-fonts/Lexend'
 import { FirstVideo } from './FirstVideo';
 
@@ -35,18 +35,28 @@ export const FirstVideoScene: React.FC = () => {
         extrapolateRight: 'clamp'
     });
 
-    let background = '#000';
+    let background = '#071F21';
     if (frame <= 4 || frame > 72) {
-        background = '#00000000';
+        background = '#071F2100';
     }
 
     return (
 		<AbsoluteFill style={{
             background
-        }} className="p-[100px] items-center justify-center">
+        }} className="p-[100px] items-center justify-center z-50">
             <div style={{rotate: `${rotate}deg`, transform: `translate(${slideX}px, ${slideY}px)`, opacity: `${opacity}`}}>
                 <FirstVideo scale={scale}/>
             </div>
+            <Audio src={staticFile('quick-woosh.wav')} />
+            <Audio src={staticFile("gay.mp3")} startFrom={2} volume={
+                f => interpolate(frame, [19,20], [0,1], {extrapolateLeft:"clamp"})
+            } />
+            <Sequence from={10}>
+                <Audio src={staticFile("notification.mp3")} />
+            </Sequence>
+            <Sequence from={60}>
+                <Audio src={staticFile('whoosh.mp3')} />
+            </Sequence>
 		</AbsoluteFill>
 	);
 };

@@ -23,7 +23,7 @@ React.FC<{question: string}> = ({question}) => {
     const transform = `translateY(${translateY}px) scale(${scale})`;
 
 	return (
-        <div style={{opacity, fontFamily, transform}} className="text-white text-[60px] font-bold leading-tight text-center w-[60%]">
+        <div style={{opacity, fontFamily, transform}} className="text-[#F4F2F3] text-[60px] font-bold leading-tight text-center w-[60%]">
             {question}
         </div>
     );

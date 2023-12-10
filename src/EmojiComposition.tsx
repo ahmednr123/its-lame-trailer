@@ -1,22 +1,5 @@
-import { useEffect, useState } from 'react';
-import {AbsoluteFill, random, useCurrentFrame} from 'remotion';
+import {AbsoluteFill, Audio, interpolate, staticFile, useCurrentFrame} from 'remotion';
 import { Emoji } from './Emoji';
-
-function generateEmojiData(count) {
-    let emojis = [];
-    for(let i = 0; i < count; i++) {
-        let scale = Math.random() * 3 + 1; // random scale between 1 and 3
-        let top = Math.random() * (1920 + 346) - 346; // random top between -346 and 1920
-        let left = Math.random() * (1080 + 346) - 346; // random left between -346 and 1080
-
-        emojis.push({
-            scale,
-            top,
-            left
-        });
-    }
-    return emojis;
-}
 
 const arr = [
     {
@@ -89,6 +72,9 @@ export const EmojiComposition: React.FC = () => {
  	return (
 		<AbsoluteFill>
             {formatterArr.map((e, i) => <Emoji x={e.left} y={e.top} scale={e.scale} flip={i%2==0}/>)}
+            <Audio src={staticFile("teen-laugh.wav")} volume={
+                f => interpolate(f, [45,59], [1,0], {extrapolateLeft:'clamp'})
+            }/>
 		</AbsoluteFill>
 	);
 };

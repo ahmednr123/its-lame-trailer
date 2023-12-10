@@ -9,6 +9,39 @@ import { Answer, AnswerType } from './Answer';
 
 //👇🏾👆🏾
 
+const animArr = [
+    [1.32, -1.50],
+    [-0.26, -1.98],
+    [-1.66, -1.12],
+    [-1.93, 0.51],
+    [-0.90, 1.79],
+    [0.75, 1.85],
+    [1.89, 0.66],
+    [1.74, -0.98],
+    [0.41, -1.96],
+    [-1.20, -1.60],
+    [-1.99, -0.16],
+    [-1.44, 1.39],
+    [0.10, 2.00],
+    [1.56, 1.25],
+    [1.97, -0.35],
+    [1.04, -1.71],
+    [-0.60, -1.91],
+    [-1.83, -0.81],
+    [-1.81, 0.84],
+    [-0.57, 1.92],
+    [1.32, -1.50]
+];
+
+function animFunc (frame: number, fps: number, arr: any[], seconds: number, {reverse,offset}: {reverse?:boolean, offset?:number}) {
+    const totalFrames = seconds * fps;
+    const currentFrame = (frame+(offset?offset:0))%totalFrames;
+    const perc = currentFrame/totalFrames;
+    const index = Math.round(perc*(arr.length-1));
+    const translate = arr[reverse ? (arr.length-1)-index : index];
+    return `translate(${translate[0]}px,${translate[1]}px)`;
+}
+
 export const SecondVideo:
 React.FC = () => {
     const lexendFontFamily = LoadLexend().fontFamily;
@@ -33,7 +66,7 @@ React.FC = () => {
         easing: Easing.sin
     });
 
-    const topMargin = interpolate(frame, [165, 185], [100, -320], {
+    const topMargin = interpolate(frame, [165, 185], [100, -290], {
         extrapolateRight: 'clamp',
         extrapolateLeft: 'clamp',
         easing: Easing.sin
@@ -51,6 +84,14 @@ React.FC = () => {
         revealed = true;
     }
 
+    const firstAnim = animFunc(frame, 30, animArr, 4, {});
+
+    const secondAnim = animFunc(frame, 30, animArr, 4, 
+        {reverse: true, offset: 5}
+    );
+
+    const index = frame > 280 ? Math.min(Math.floor((frame-280)/5), 3) : 0;
+    const votes = ['Yogi', 'Amit', 'Sonia'];
     const loader = Math.round(interpolate(frame, [80,180], [100,50]));
 
     const isSelected = frame > 134;
@@ -65,41 +106,48 @@ React.FC = () => {
             }}
             className="flex flex-col items-center rounded-3xl w-[972px] scene-container bg-[#5DB09E]"
         >
-            <div style={{marginTop: `${topMargin}px`}} className="text-white text-[60px] font-bold leading-tight text-center w-[70%] mb-[80px]">
+            <div style={{marginTop: `${topMargin}px`}} className="text-[#F4F2F3] text-[60px] font-bold leading-tight text-center w-[70%] mb-[80px]">
                 If given a day as Prime Minister, what actions would you take?
             </div>
             <div className='w-[80%]'>
                 <div
                     style={{
+                        transform: firstAnim,
                         fontFamily: londrinaFontFamily,
                         animationDirection: 'normal',
                         animationDelay: '1s',
                         boxShadow: '12px 12px 0px rgba(0,0,0,0.2)',
                         border: '4px solid black'
                     }}
-                    className="p-[50px] pb-[35px] text-[90px] leading-tight w-[620px] text-center bg-[#F4F2F3] rounded-2xl"
+                    className="relative p-[50px] pb-[35px] text-[#071F21] text-[90px] leading-[1] w-[620px] text-center bg-[#F4F2F3] rounded-2xl"
                 >
+                    <div style={{fontFamily: lexendFontFamily, transform: 'translateX(-50%)'}} className='absolute text-[30px] text-[#F4F2F3] flex top-[-30px] left-[50%]'>
+                        {
+                            votes.slice(0,index).map(str => <div className='py-[10px] px-[20px] bg-[#071F21] rounded-xl mx-[3px]'>{str}</div>)
+                        }
+                    </div>
                     Demonitize again!
-                    <div style={{fontFamily:lexendFontFamily}} className={`relative font-light text-[25px] ${revealed ? 'text-black' : 'text-gray-400'} mt-[20px]`}>
+                    <div style={{fontFamily:lexendFontFamily}} className={`relative font-light text-[25px] ${revealed ? 'text-[#071F21]' : 'text-gray-400'} mt-[40px]`}>
                         { !revealed ? '?????' : 'Narendra Modi' }
-                        <div style={{width: `${revealWidth}px`}} className={`absolute h-[40px] bg-black top-0 rounded-full ${revealClamp}`}></div>
+                        <div style={{width: `${revealWidth}px`}} className={`absolute h-[40px] bg-[#071F21] top-0 rounded-full ${revealClamp}`}></div>
                     </div>
                 </div>
             </div>
             <div className='w-[80%] flex flex-row-reverse mt-[50px]'>
                 <div
                     style={{
+                        transform: secondAnim,
                         fontFamily: londrinaFontFamily,
                         animationDirection: 'reverse',
                         animationDelay: '2s',
                         boxShadow: '12px 12px 0px rgba(0,0,0,0.2)',
                         border: '4px solid black'
                     }}
-                    className="p-[50px] pt-[35px] text-[90px] leading-tight w-[620px] text-center bg-[#F4F2F3] rounded-2xl"
+                    className="p-[50px] pt-[35px] text-[#071F21] text-[90px] leading-[1] w-[620px] text-center bg-[#F4F2F3] rounded-2xl"
                 >
-                    <div style={{fontFamily:lexendFontFamily}} className={`relative font-light text-[25px] ${revealed ? 'text-black' : 'text-gray-400'} mb-[20px]`}>
+                    <div style={{fontFamily:lexendFontFamily}} className={`relative font-light text-[25px] ${revealed ? 'text-[#071F21]' : 'text-gray-400'} mb-[35px]`}>
                         { !revealed ? '?????' : 'Rahul Gandhi' }
-                        <div style={{width: `${revealWidth}px`}} className={`absolute h-[40px] bg-black top-0 rounded-full ${revealClamp}`}></div>
+                        <div style={{width: `${revealWidth}px`}} className={`absolute h-[40px] bg-[#071F21] top-0 rounded-full ${revealClamp}`}></div>
                     </div>
                     Make potatoes into gold
                 </div>

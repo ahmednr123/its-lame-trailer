@@ -7,6 +7,7 @@ import { ThirdTextScene } from './ThirdTextScene';
 import { FirstVideoScene } from './FirstVideoScene';
 import { SecondVideoScene } from './SecondVideoScene';
 import { WinnersScene } from './WinnersScene';
+import { ActionScene } from './ActionScene';
 
 export const MyComposition: React.FC = () => {
 	return (
@@ -19,7 +20,10 @@ export const MyComposition: React.FC = () => {
         <Sequence from={180} durationInFrames={85}>
             <FirstTextScene />
         </Sequence>
-        <Sequence from={638} durationInFrames={80}>
+        <Sequence from={818} durationInFrames={173}>
+            <ActionScene/>
+        </Sequence>
+        <Sequence from={638} durationInFrames={200}>
             <WinnersScene/>
         </Sequence>
         <Sequence from={333} durationInFrames={314}>
